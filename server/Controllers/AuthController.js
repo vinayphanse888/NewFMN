@@ -1,9 +1,9 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const User = require("../Models/User");
-const bcrypt = require("bcrypt");
-const multer = require("multer");
-const cloudinary = require("cloudinary");
+import express from "express";
+import dotenv from "dotenv";
+import User from "../Models/User.js";
+import bcrypt from "bcrypt";
+import multer from "multer";
+import cloudinary from "cloudinary";
 
 dotenv.config();
 
@@ -66,6 +66,7 @@ const signup = async (req, res) => {
     }
 };
 
+//Login Route
 const login = async (req, res) => {
     try {
         const { userEmail, userPassword } = req.body;
@@ -90,4 +91,4 @@ const login = async (req, res) => {
 };
 
 
-module.exports = { signup, login };
+export default { signup, login };

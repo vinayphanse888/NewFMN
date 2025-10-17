@@ -1,8 +1,8 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const Notes = require("../Models/Notes");
-const multer = require("multer");
-const path = require("path");
+import express from "express";
+import dotenv from "dotenv";
+import Notes from "../Models/Notes.js";
+import multer from "multer";
+import path from "path";
 
 dotenv.config();
 
@@ -72,10 +72,10 @@ const getNoteByID = async (req, res) => {
             uploadedBy: userId
         }).then(data => {
             res.send({ data: data });
-        })
+        });
     } catch (error) {
         console.log(error);
     }
 };
 
-module.exports = { uploadNote, getNote, getNoteByID };
+export default { uploadNote, getNote, getNoteByID };

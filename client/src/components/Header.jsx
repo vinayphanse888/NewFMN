@@ -26,15 +26,15 @@ const Navbar = () => {
         <div className="flex h-[60px] w-[120px] items-center justify-center overflow-hidden">
           <img src="/logo.png" alt="Logo" />
         </div>
-        {/* nav links  */}
+        {/* nav links  */}
         <GiHamburgerMenu className="text-xl md:hidden" />
         <div className="hidden md:flex md:items-center md:justify-center md:gap-4">
           <Link to="/">
             Home
           </Link>
-          <Link to="/about">
-            About
-          </Link>
+          {/* <Link to="/about">
+            About
+          </Link> */}
 
           {/* Conditional Rendering */}
           {isAuthenticated ? (

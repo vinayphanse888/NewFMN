@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// Import all necessary pages and components
 import Header from "./components/Header";
-import Search from "./pages/Search";
-import About from "./pages/About";
-import Upload from "./pages/Upload";
-import Faq from "./pages/Faq";
-import Profile from "./pages/Profile";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { useSelector } from "react-redux";
+import Upload from "./pages/Upload";
+import Profile from "./pages/Profile";
+import Search from "./pages/Search";
 
 const App = () => {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -17,27 +17,20 @@ const App = () => {
   return (
     <Router>
       <Header />
-
       <div>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          {isAuthenticated ? (
-            <>
-              <Route path="/upload" element={<Upload />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/search" element={<Search />} />
-            </>
-          ) : (
-            <>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-            </>
-          )}
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<Faq />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+
+          {/* Protected routes for authenticated users */}
+          <Route path="/upload" element={isAuthenticated ? <Upload /> : <Navigate to="/login" />} />
+          <Route path="/profile" element={isAuthenticated ? <Profile /> : <Navigate to="/login" />} />
+          <Route path="/search" element={isAuthenticated ? <Search /> : <Navigate to="/login" />} />
+        
         </Routes>
       </div>
-    </Router >
+    </Router>
   );
 };
 

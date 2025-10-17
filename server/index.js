@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const express = require("express");
-const bodyParser = require("body-parser");
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+import express from "express";
+import bodyParser from "body-parser";
 
-const authRoutes = require("./Routes/auth");
-const noteRoutes = require("./Routes/notes");
+import authRoutes from "./Routes/auth.js";
+import noteRoutes from "./Routes/notes.js";
 
 const app = express();
 const PORT = 6969;
@@ -17,8 +17,8 @@ app.use(express.json());
 
 
 try {
-    mongoose.connect(process.env.MONGO_URL);
-    console.log("Connection Successfull");
+    mongoose.connect(process.env.MONGO_URI);
+    console.log("\u2705 MongoDB Connected Successfully");
 } catch (error) {
     console.log(error);
 }

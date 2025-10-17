@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const authController = require("../Controllers/AuthController");
-const multer = require("multer");
-const dotenv = require("dotenv");
-const cloudinary = require("cloudinary");
+import authController from "../Controllers/AuthController.js";
+import multer from "multer";
+import dotenv from "dotenv";
+import cloudinary from "cloudinary";
 
 dotenv.config();
 
@@ -34,4 +34,4 @@ router.post("/signup", upload.single("profileImage"), authController.signup);
 // Login
 router.post("/login", authController.login);
 
-module.exports = router;
+export default router;

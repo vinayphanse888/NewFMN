@@ -3,7 +3,7 @@
 
 
 ```bash
-  git clone https://github.com/Yuvadi29/NewFMN
+  git clone 
 ```
 
 Get inside the server folder and run

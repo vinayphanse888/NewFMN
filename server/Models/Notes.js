@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const NoteSchema = mongoose.Schema({
     fileName: {
@@ -19,10 +19,9 @@ const NoteSchema = mongoose.Schema({
     },
     uploadedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
         required: true,
     },
-
 });
 
-module.exports = mongoose.model("Notes", NoteSchema);
+export default mongoose.model("Notes", NoteSchema);
